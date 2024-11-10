@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamil Love Poetry</title>
+    <link rel="icon" href="./heartbeat.jpg.png" type="image/x-icon">
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Page 1: Home Page */
+        .home-page {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: linear-gradient(135deg, #ff7eb9, #ff65a3, #7afcff);
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+            transition: opacity 1s ease;
+        }
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 90%;
+            max-width: 1200px;
+        }
+        .home-page img {
+            width: 300px; /* Set the image width */
+            height: auto;
+            margin-right: 40px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .text-content {
+            max-width: 500px;
+            text-align: left; /* Align text to the left */
+        }
+
+        .text-content p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .explore-button {
+            padding: 12px 30px;
+            font-size: 1.3em;
+            background-color: #fff;
+            color: #ff5e5e;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+            margin-top: 20px;
+        }
+
+        .explore-button:hover {
+            transform: scale(1.1);
+        }
+        /* Floating Hearts Animation */
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: #ff5e5e;
+            transform: rotate(45deg);
+            animation: floatHearts 10s linear infinite;
+            opacity: 0.8;
+        }
+
+        .heart:before, .heart:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #ff5e5e;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -50%;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -50%;
+        }
+
+        /* Heart Floating Animation */
+        @keyframes floatHearts {
+            0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+        }
+
+        /* Pulse Animation for Explore Button */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Page 2: Poetry Page */
+        .poetry-page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff7eb9, #ff65a3, #7afcff);
+    color: #333;
+    padding: 40px 20px;
+    text-align: center;
+    animation: pulseBackground 1.5s infinite ease-in-out; /* Apply animation */
+}
+
+.poetry {
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    font-size: 1.4em; /* Adjust font size for better readability */
+    line-height: 1.8; /* Ensure proper line spacing */
+    color: #333;
+    background: rgba(255, 255, 255, 0.9); /* Light background for better contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Noto Sans Tamil', sans-serif; /* Font for Tamil text */
+    text-align: justify; /* Justify the poem text */
+    max-height: 80vh; /* Limit height to avoid overflowing */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.poetry-line {
+    margin-bottom: 15px; /* Ensure space between lines */
+}
+
+.poetry h1 {
+    font-size: 2.5em; /* Make the episode title larger */
+    margin-bottom: 20px;
+}
+        .floating-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #ff5e5e;
+    transform: rotate(45deg);
+    animation: floatHearts 6s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.heart:before, .heart:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff5e5e;
+    border-radius: 50%;
+}
+
+
+
+/* Heart Floating Animation */
+@keyframes floatHearts {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+}
+
+/* Pulse Animation for Explore Button */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes headTilt {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.poetry h1 {
+    animation: headTilt 1s infinite; /* Add head tilt animation to title */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .home-page img {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+
+            .text-content p { font-size: 1.2em; }
+            .explore-button { font-size: 1em; }
+        }
+        @keyframes heartFloat {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+}
+
+@keyframes pulseBackground {
+    0%, 100% {
+        background: linear-gradient(135deg, #ff7eb9, #ff65a3, #7afcff);
+    }
+    50% {
+        background: linear-gradient(135deg, #ff5e5e, #f3a7c1, #ff9b9b);
+    }
+}
+@keyframes floatHearts {
+    0% { transform: translateY(100vh) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+}
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div class="home-page" id="homePage">
+        <h1>HEART BEAT</h1>
+        <p>LET'S DIVE INTO THE BEAUTY OF TAMIL POEMS</p>
+        <button class="explore-button" onclick="showPoetryPage()">Explore Now</button>
+        <img src="heartbeat.jpg.png" alt="Love Poetry Image">
+        
+
+        <!-- Hearts Animation -->
+        <div class="hearts">
+            <!-- Multiple hearts with random positions and durations for a dynamic effect -->
+            <div class="heart" style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 20%; animation-duration: 8s; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 30%; animation-duration: 5s; animation-delay: 4s;"></div>
+            <div class="heart" style="left: 40%; animation-duration: 9s; animation-delay: 1s;"></div>
+            <div class="heart" style="left: 50%; animation-duration: 7s; animation-delay: 3s;"></div>
+            <div class="heart" style="left: 60%; animation-duration: 6s; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 70%; animation-duration: 8s; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 80%; animation-duration: 5s; animation-delay: 4s;"></div>
+            <div class="heart" style="left: 90%; animation-duration: 9s; animation-delay: 1s;"></div>
+        </div>
+    </div>
+
+    <!-- Poetry Page -->
+    <div class="poetry-page" id="poetryPage">
+        <div class="hearts">
+            <div class="heart" style="left: 10%; animation-duration: 6s; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 20%; animation-duration: 8s; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 30%; animation-duration: 5s; animation-delay: 4s;"></div>
+            <div class="heart" style="left: 40%; animation-duration: 9s; animation-delay: 1s;"></div>
+            <div class="heart" style="left: 50%; animation-duration: 7s; animation-delay: 3s;"></div>
+            <div class="heart" style="left: 60%; animation-duration: 6s; animation-delay: 0s;"></div>
+            <div class="heart" style="left: 70%; animation-duration: 8s; animation-delay: 2s;"></div>
+            <div class="heart" style="left: 80%; animation-duration: 5s; animation-delay: 4s;"></div>
+            <div class="heart" style="left: 90%; animation-duration: 9s; animation-delay: 1s;"></div>
+        </div>
+        <h1>EPISODE 1</h1>
+        <div class="poetry"><div class="poetry-line">இளமாலை நேரம் இளவேனிற் காலம்</div>
+        <div class="poetry-line">தென்றலும் மெல்லிய இசையாய் தீண்ட</div>
+        <div class="poetry-line">மரங்களின் நடன ஆர்ப்பாட்டம் மழையின் மண் வாசனையோடு !!!</div>
+        <div class="poetry-line">மனதை பறிக்கும் அந்த நிமிடம் அவளின் மனமும் தொலைந்தே போகும் என அறியவில்லை !!!</div>
+        <div class="poetry-line">அவனின் எதிர்பாராத சந்திப்புகள்</div>
+        <div class="poetry-line">தொடரும் பொழுது ..</div>
+        <div class="poetry-line">சந்தையில் கூச்சலிடும் அத்தனை சத்தங்களுக்கிடையே</div>
+        <div class="poetry-line">அவளின் கால் கொலுசின் சத்தம் மட்டும் அவனுக்கு கணீர் என்று ஒலித்தது !!..</div>
+        <div class="poetry-line">சிறு குழந்தையாக இருக்குமோ என அவனும் எண்ணிக்கொண்டே திரும்பும் வேளையில் சட்டென்று மிதித்தான்  அக்கொலுசொலியின் கால்களை</div>
+        <div class="poetry-line">குழந்தை அல்ல பெண் பதுமை என அறிந்த அவனும் பட்டென்று தலை குனிந்தான் !!!</div>
+        <div class="poetry-line">கூட்டநெரிசலை கண்டு வராத கூச்சம்</div>
+        <div class="poetry-line">அவளை கண்டதும் வெட்கமாய் புன்னகையில் எதிரொலித்தது...</div>
+        <div class="poetry-line">அவளும் அவனை பட படவென்று திட்டிமுடித்தாள்.</div>
+        <div class="poetry-line">அவன் மனதில் காதல் முடிச்சை இட்டு சென்றால் ...</div>
+        <div class="poetry-line">இனி அவளை காண்போமா என காதல் கனவில் அவன் !!</div>
+        <div class="poetry-line">கவலையோடு ....</div>
+        <div class="poetry-line">                                    -தென்றல் பிரசாத்🩵
+        </div>    
+    </div>
+        <!-- Add more poems as needed -->
+    </div>
+
+    <script>
+        // Function to show poetry page with transition
+        function showPoetryPage() {
+            document.getElementById('homePage').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('homePage').style.display = 'none';
+                const poetryPage = document.getElementById('poetryPage');
+                poetryPage.style.display = 'block';
+                setTimeout(() => { poetryPage.style.opacity = '1'; }, 10);
+            }, 1000); // 1 second delay for smooth transition
+        }
+    </script>
+</body>
+</html> 
